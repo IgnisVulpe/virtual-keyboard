@@ -28,4 +28,16 @@ export default class AddHTMLElements {
     main.appendChild(h2);
     this.body.appendChild(main);
   }
+
+  addFooter() {
+    const footer = document.createElement('footer');
+    footer.classList.add('footer');
+
+    const h2 = document.createElement('h2');
+    h2.classList.add('title');
+    h2.innerText = 'Правила пользования клавиатурой';
+
+    footer.appendChild(h2);
+    this.body.appendChild(footer);
+  }
 }
