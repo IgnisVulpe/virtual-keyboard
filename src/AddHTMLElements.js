@@ -1,8 +1,16 @@
+import keysJson from './keyboard-keys.json';
+
 export default class AddHTMLElements {
   body;
 
+  keysAndFields;
+
+  keysObject;
+
   constructor(bodySelector) {
     this.body = document.querySelector(bodySelector);
+    this.keysAndFields = null;
+    this.keysObject = keysJson;
   }
 
   addHeader() {
@@ -17,6 +25,44 @@ export default class AddHTMLElements {
     this.body.appendChild(header);
   }
 
+  addKeysAndField() {
+    this.keysAndFields = document.createElement('div');
+    this.keysAndFields.classList.add('field-keyboard-container');
+
+    const field = document.createElement('textarea');
+    field.classList.add('input-field');
+
+    const keyBoard = document.createElement('div');
+    keyBoard.classList.add('keyboard');
+
+    const arrRows = [];
+
+    for (let i = 1; i <= 5; i++) {
+      const row = document.createElement('div');
+      row.classList.add(`row${i}`);
+      arrRows.push(row);
+    }
+
+    console.log(arrRows);
+
+    Object.keys(this.keysObject.en).forEach((element) => {
+      if (this.keysObject.en[element].row === '1') {
+        console.log(this.keysObject.en[element]);
+
+        const keyButton = document.createElement('button');
+        keyButton.classList.add('key-button');
+        keyButton.innerHTML = this.keysObject.en[element].symbolDefault.symbol;
+
+        arrRows[0].appendChild(keyButton);
+      }
+    });
+
+    keyBoard.appendChild(arrRows[0]);
+
+    this.keysAndFields.appendChild(field);
+    this.keysAndFields.appendChild(keyBoard);
+  }
+
   addMain() {
     const main = document.createElement('main');
     main.classList.add('main');
@@ -26,6 +72,10 @@ export default class AddHTMLElements {
     h2.innerText = 'Тут будут кнопки';
 
     main.appendChild(h2);
+
+    this.addKeysAndField();
+    main.appendChild(this.keysAndFields);
+
     this.body.appendChild(main);
   }
 
@@ -37,7 +87,17 @@ export default class AddHTMLElements {
     h2.classList.add('title');
     h2.innerText = 'Правила пользования клавиатурой';
 
+    const p1 = document.createElement('p');
+    p1.classList.add('rule');
+    p1.innerText = 'Клавиатура создана в операционной системе Windows';
+
+    const p2 = document.createElement('p');
+    p2.classList.add('rule');
+    p2.innerText = 'Для переключения языка комбинация: левыe Ctrl + Shift';
+
     footer.appendChild(h2);
+    footer.appendChild(p1);
+    footer.appendChild(p2);
     this.body.appendChild(footer);
   }
 }
