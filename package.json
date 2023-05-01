@@ -1,0 +1,31 @@
+{
+  "name": "virtual-keyboard",
+  "version": "0.1.0",
+  "description": "RS School Task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "webpack --node-env development",
+    "build-dev-css": "webpack --node-env development --env no_css_in_js=true",
+    "watch": "webpack --watch",
+    "server": "webpack serve",
+    "server-dev": "webpack serve --node-env development --env no_css_in_js=true",
+    "build-production": "webpack build"
+  },
+  "author": "ignisvulpe",
+  "license": "ISC",
+  "dependencies": {
+    "html-webpack-plugin": "^5.5.0"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "eslint": "8.22.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  }
+}
