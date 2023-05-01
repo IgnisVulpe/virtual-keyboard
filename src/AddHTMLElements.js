@@ -46,18 +46,18 @@ export default class AddHTMLElements {
     console.log(arrRows);
 
     Object.keys(this.keysObject.en).forEach((element) => {
-      if (this.keysObject.en[element].row === '1') {
-        console.log(this.keysObject.en[element]);
+      console.log(this.keysObject.en[element]);
 
-        const keyButton = document.createElement('button');
-        keyButton.classList.add('key-button');
-        keyButton.innerHTML = this.keysObject.en[element].symbolDefault.symbol;
+      const keyButton = document.createElement('button');
+      keyButton.classList.add('key-button');
+      keyButton.innerHTML = this.keysObject.en[element].symbolDefault.symbol;
 
-        arrRows[0].appendChild(keyButton);
-      }
+      arrRows[Number(this.keysObject.en[element].row) - 1].appendChild(keyButton);
     });
 
-    keyBoard.appendChild(arrRows[0]);
+    arrRows.forEach((element) => {
+      keyBoard.appendChild(element);
+    });
 
     this.keysAndFields.appendChild(field);
     this.keysAndFields.appendChild(keyBoard);
