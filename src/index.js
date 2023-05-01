@@ -16,6 +16,7 @@ function loaded() {
   const keyboardEventsHandler = new KeyboardEventsHandler();
 
   keyboardEventsHandler.keydownListener();
+  keyboardEventsHandler.keyupListener();
 }
 
 window.addEventListener('load', loaded);

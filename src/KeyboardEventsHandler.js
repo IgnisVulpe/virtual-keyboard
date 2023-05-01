@@ -31,8 +31,12 @@ export default class KeyboardEventsHandler {
   keydownHandler(event) {
     console.log(event);
 
-    function press(key) {
-      key.classList.add('pressed');
+    function changeState(key) {
+      if (event.type === 'keydown') {
+        key.classList.add('pressed');
+      } else {
+        key.classList.remove('pressed');
+      }
     }
 
     if (!this.exceptionSymbols.includes(event.key)) {
@@ -43,28 +47,28 @@ export default class KeyboardEventsHandler {
       const pressedKey = document.querySelector(
         `button[data-key="${eventKey}"]`,
       );
-      press(pressedKey);
+      changeState(pressedKey);
     } else if (this.exceptionSymbols.includes(event.key)) {
       switch (event.key) {
         case '\\': {
           const pressedKey = document.querySelector(
             'button[data-key="&#92;"]',
           );
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case 'Delete': {
           const pressedKey = document.querySelector(
             'button[data-key="Del"]',
           );
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case 'CapsLock': {
           const pressedKey = document.querySelector(
             'button[data-key="Caps Lock"]',
           );
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case 'Shift': {
@@ -76,14 +80,14 @@ export default class KeyboardEventsHandler {
           } else {
             [, pressedKey] = document.querySelectorAll('button[data-key="Shift"]');
           }
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case '/': {
           const pressedKey = document.querySelector(
             'button[data-key="&#47;"]',
           );
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case 'Control': {
@@ -95,7 +99,7 @@ export default class KeyboardEventsHandler {
           } else {
             [, pressedKey] = document.querySelectorAll('button[data-key="Ctrl"]');
           }
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case 'Alt': {
@@ -107,49 +111,42 @@ export default class KeyboardEventsHandler {
           } else {
             [, pressedKey] = document.querySelectorAll('button[data-key="Alt"]');
           }
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case ' ': {
           const pressedKey = document.querySelector(
             'button[data-key="Space"]',
           );
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case 'ArrowUp': {
           const pressedKey = document.querySelector(
             'button[data-key="&#9650;"]',
           );
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case 'ArrowDown': {
           const pressedKey = document.querySelector(
             'button[data-key="&#9660;"]',
           );
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case 'ArrowLeft': {
           const pressedKey = document.querySelector(
             'button[data-key="&#9668;"]',
           );
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         case 'ArrowRight': {
           const pressedKey = document.querySelector(
             'button[data-key="&#9658;"]',
           );
-          press(pressedKey);
-          break;
-        }
-        case '': {
-          const pressedKey = document.querySelector(
-            'button[data-key=""]',
-          );
-          press(pressedKey);
+          changeState(pressedKey);
           break;
         }
         default: {
@@ -161,5 +158,9 @@ export default class KeyboardEventsHandler {
 
   keydownListener() {
     document.addEventListener('keydown', this.keydownHandler.bind(this));
+  }
+
+  keyupListener() {
+    document.addEventListener('keyup', this.keydownHandler.bind(this));
   }
 }
