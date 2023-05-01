@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.row {
+  display: flex;
+  column-gap: 5px;
+}
+
+.key-button {
+  width: 50px;
+  height: 50px;
+}
+
+.backspace {
+  width: 115px;
+}
+
+.tab {
+  width: 60px;
+}
+
+.caps-lock {
+  width: 90px;
+}
+
+.enter {
+  width: 130px;
+}
+
+.left-shift,
+.right-shift {
+  width: 110px;
+}
+
+.left-ctrl {
+  width: 90px;
+}
+
+.language {
+  width: 70px;
+}
+
+.space {
+  width: 325px;
+}
+
+.right-ctrl {
+  width: 55px;
+}

@@ -39,6 +39,7 @@ export default class AddHTMLElements {
 
     for (let i = 1; i <= 5; i++) {
       const row = document.createElement('div');
+      row.classList.add('row');
       row.classList.add(`row${i}`);
       arrRows.push(row);
     }
@@ -51,6 +52,52 @@ export default class AddHTMLElements {
       const keyButton = document.createElement('button');
       keyButton.classList.add('key-button');
       keyButton.innerHTML = this.keysObject.en[element].symbolDefault.symbol;
+
+      switch (this.keysObject.en[element].symbolDefault.name) {
+        case 'Backspace': {
+          keyButton.classList.add('backspace');
+          break;
+        }
+        case 'Tab': {
+          keyButton.classList.add('tab');
+          break;
+        }
+        case 'Caps Lock': {
+          keyButton.classList.add('caps-lock');
+          break;
+        }
+        case 'Enter': {
+          keyButton.classList.add('enter');
+          break;
+        }
+        case 'Left Shift': {
+          keyButton.classList.add('left-shift');
+          break;
+        }
+        case 'Right Shift': {
+          keyButton.classList.add('right-shift');
+          break;
+        }
+        case 'Left Ctrl': {
+          keyButton.classList.add('left-ctrl');
+          break;
+        }
+        case 'Language': {
+          keyButton.classList.add('language');
+          break;
+        }
+        case 'Space': {
+          keyButton.classList.add('space');
+          break;
+        }
+        case 'Right Ctrl': {
+          keyButton.classList.add('right-ctrl');
+          break;
+        }
+        default: {
+          break;
+        }
+      }
 
       arrRows[Number(this.keysObject.en[element].row) - 1].appendChild(keyButton);
     });
