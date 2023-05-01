@@ -1,9 +1,13 @@
 export default class KeyboardEventsHandler {
   exceptionSymbols;
 
-  alphabetsSymbols;
+  alphabetsSymbolsUpperCase;
 
-  constructor() {
+  textarea;
+
+  constructor(textareaClass) {
+    this.textarea = document.querySelector(textareaClass);
+
     this.exceptionSymbols = [
       '\\',
       'Delete',
@@ -28,12 +32,68 @@ export default class KeyboardEventsHandler {
     ];
   }
 
+  virtualKeyHandler(event) {
+    const localTextarea = this.textarea;
+
+    function addText(newSymbols) {
+      localTextarea.value += newSymbols;
+      const eventChange = new Event('change');
+      localTextarea.dispatchEvent(eventChange);
+    }
+
+    function deleteSymbol() {
+      localTextarea.value = localTextarea.value.split('').slice(0, -1).join('');
+      const eventChange = new Event('change');
+      localTextarea.dispatchEvent(eventChange);
+    }
+
+    function deleteText() {
+      localTextarea.value = '';
+      const eventChange = new Event('change');
+      localTextarea.dispatchEvent(eventChange);
+    }
+
+    switch (event.srcElement.innerText) {
+      case 'Backspace': {
+        deleteSymbol();
+        break;
+      }
+      case 'Del': {
+        deleteText();
+        break;
+      }
+      default: {
+        addText(event.srcElement.innerText);
+        break;
+      }
+    }
+  }
+
+  virtualKeysListener() {
+    document.querySelectorAll('.key-button').forEach((element) => {
+      element.addEventListener('click', this.virtualKeyHandler.bind(this));
+    });
+  }
+
   keydownHandler(event) {
     console.log(event);
+
+    const clickEvent = new MouseEvent(
+      'click',
+      {
+        view: window,
+        bubbles: true,
+        cancelable: false,
+      },
+    );
 
     function changeState(key) {
       if (event.type === 'keydown') {
         key.classList.add('pressed');
+        key.addEventListener('click', () => {
+          console.log('Clicked!', key);
+        });
+        key.dispatchEvent(clickEvent);
       } else {
         key.classList.remove('pressed');
       }

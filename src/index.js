@@ -13,8 +13,9 @@ function loaded() {
   addHTMLElements.addMain();
   addHTMLElements.addFooter();
 
-  const keyboardEventsHandler = new KeyboardEventsHandler();
+  const keyboardEventsHandler = new KeyboardEventsHandler('.input-field');
 
+  keyboardEventsHandler.virtualKeysListener();
   keyboardEventsHandler.keydownListener();
   keyboardEventsHandler.keyupListener();
 }
