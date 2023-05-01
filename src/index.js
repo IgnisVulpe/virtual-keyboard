@@ -1,11 +1,16 @@
 import '../assets/styles/style.css';
+import '../assets/styles/normalize.css';
 
 import AddHTMLElements from './AddHTMLElements';
 
-const addHTMLElements = new AddHTMLElements('.body');
+function loaded() {
+  const addHTMLElements = new AddHTMLElements('.body');
 
-console.log(addHTMLElements.body);
+  console.log(addHTMLElements.body);
 
-addHTMLElements.addHeader();
-addHTMLElements.addMain();
-addHTMLElements.addFooter();
+  addHTMLElements.addHeader();
+  addHTMLElements.addMain();
+  addHTMLElements.addFooter();
+}
+
+window.addEventListener('load', loaded);
