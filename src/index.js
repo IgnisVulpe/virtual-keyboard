@@ -2,6 +2,7 @@ import '../assets/styles/style.css';
 import '../assets/styles/normalize.css';
 
 import AddHTMLElements from './AddHTMLElements';
+import KeyboardEventsHandler from './KeyboardEventsHandler';
 
 function loaded() {
   const addHTMLElements = new AddHTMLElements('.body');
@@ -11,6 +12,10 @@ function loaded() {
   addHTMLElements.addHeader();
   addHTMLElements.addMain();
   addHTMLElements.addFooter();
+
+  const keyboardEventsHandler = new KeyboardEventsHandler();
+
+  keyboardEventsHandler.keydownListener();
 }
 
 window.addEventListener('load', loaded);

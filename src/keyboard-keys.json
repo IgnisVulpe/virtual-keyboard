@@ -3,7 +3,7 @@
     "1": {
       "row": "1",
       "symbolDefault": {
-        "symbol": "&#96;",
+        "symbol": "`",
         "name": "Grave Accent"
       },
       "symbolShift": {

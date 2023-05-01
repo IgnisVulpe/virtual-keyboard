@@ -37,7 +37,7 @@ export default class AddHTMLElements {
 
     const arrRows = [];
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 5; i += 1) {
       const row = document.createElement('div');
       row.classList.add('row');
       row.classList.add(`row${i}`);
@@ -52,6 +52,10 @@ export default class AddHTMLElements {
       const keyButton = document.createElement('button');
       keyButton.classList.add('key-button');
       keyButton.innerHTML = this.keysObject.en[element].symbolDefault.symbol;
+      keyButton.setAttribute(
+        'data-key',
+        `${this.keysObject.en[element].symbolDefault.symbol}`,
+      );
 
       switch (this.keysObject.en[element].symbolDefault.name) {
         case 'Backspace': {
@@ -124,10 +128,6 @@ export default class AddHTMLElements {
     const footer = document.createElement('footer');
     footer.classList.add('footer');
 
-    const h2 = document.createElement('h2');
-    h2.classList.add('title');
-    h2.innerText = 'Правила пользования клавиатурой';
-
     const p1 = document.createElement('p');
     p1.classList.add('rule');
     p1.innerText = 'Клавиатура создана в операционной системе Windows';
@@ -136,7 +136,6 @@ export default class AddHTMLElements {
     p2.classList.add('rule');
     p2.innerText = 'Для переключения языка комбинация: левыe Ctrl + Shift';
 
-    footer.appendChild(h2);
     footer.appendChild(p1);
     footer.appendChild(p2);
     this.body.appendChild(footer);
