@@ -114,12 +114,6 @@ export default class AddHTMLElements {
     const main = document.createElement('main');
     main.classList.add('main');
 
-    const h2 = document.createElement('h2');
-    h2.classList.add('title');
-    h2.innerText = 'Тут будут кнопки';
-
-    main.appendChild(h2);
-
     this.addKeysAndField();
     main.appendChild(this.keysAndFields);
 

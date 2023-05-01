@@ -2,6 +2,18 @@
   box-sizing: border-box;
 }
 
+.header,
+.main,
+.footer {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.input-field {
+  width: 100%;
+  min-height: 256px;
+}
+
 .keyboard {
   display: flex;
   flex-direction: column;
