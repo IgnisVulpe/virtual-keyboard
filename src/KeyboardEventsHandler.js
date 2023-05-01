@@ -76,8 +76,6 @@ export default class KeyboardEventsHandler {
   }
 
   keydownHandler(event) {
-    console.log(event);
-
     const clickEvent = new MouseEvent(
       'click',
       {
@@ -90,9 +88,7 @@ export default class KeyboardEventsHandler {
     function changeState(key) {
       if (event.type === 'keydown') {
         key.classList.add('pressed');
-        key.addEventListener('click', () => {
-          console.log('Clicked!', key);
-        });
+
         key.dispatchEvent(clickEvent);
       } else {
         key.classList.remove('pressed');

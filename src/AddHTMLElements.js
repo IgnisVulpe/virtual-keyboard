@@ -44,11 +44,7 @@ export default class AddHTMLElements {
       arrRows.push(row);
     }
 
-    console.log(arrRows);
-
     Object.keys(this.keysObject.en).forEach((element) => {
-      console.log(this.keysObject.en[element]);
-
       const keyButton = document.createElement('button');
       keyButton.classList.add('key-button');
       keyButton.innerHTML = this.keysObject.en[element].symbolDefault.symbol;

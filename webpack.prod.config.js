@@ -3,8 +3,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // suppress reason: ESLint cant identifier inner lvl webpack config file
 
-console.log('Using webpack.prod.config.js.');
-
 module.exports = {
   mode: 'production',
   entry: './src/index.js',

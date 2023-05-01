@@ -7,13 +7,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { getTimestamp } = require('./config_utils/config-utils');
 // getTimestamp function import
 
-console.log('Using webpack.dev.config.js.');
-
 module.exports = (env) => {
   // Use env.<YOUR VARIABLE> here:
   // noinspection JSUnresolvedVariable
   const noCssInJs = env.no_css_in_js === 'true';
-  console.log({ noCssInJs });
 
   const styleLoaderOrMiniCssExtractPluginLoader = noCssInJs
     ? MiniCssExtractPlugin.loader
